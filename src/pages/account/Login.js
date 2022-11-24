@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { setAuthToken } from "../auth/api";
-import { AuthContext } from "../context/Allcontext";
+import { setAuthToken } from "../../auth/api";
+import { AuthContext } from "../../context/Allcontext";
+
+
 
 const Login = () => {
   const [resetPass, setResetPass] = useState('')

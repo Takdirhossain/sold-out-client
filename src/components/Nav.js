@@ -92,6 +92,7 @@ const Nav = () => {
           ) : (
             <>
               <div className="tooltip" data-tip="Login/register">
+                <Link to='/login'>
                 <button>
                   {" "}
                   <FontAwesomeIcon
@@ -99,6 +100,7 @@ const Nav = () => {
                     icon={faLock}
                   ></FontAwesomeIcon>{" "}
                 </button>
+                </Link>
               </div>
             </>
           )}

@@ -1,11 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
-import { setAuthToken } from "../auth/api";
-import { AuthContext } from "../context/Allcontext";
+import { setAuthToken } from "../../auth/api";
+import { AuthContext } from "../../context/Allcontext";
 
 const Register = () => {
-  const { user, updateUserProfile, createUser } = useContext(AuthContext);
+  const { updateUserProfile, createUser } = useContext(AuthContext);
+const [checkbox, setCheckBox] = useState('')
+
+
 
   const handaleSubmit = (e) => {
     e.preventDefault();
@@ -13,8 +16,10 @@ const Register = () => {
     const name = form.name.value;
     const image = form.image.files[0];
     const email = form.email.value;
-    const check = form.box.value
+    const check = checkbox
     const password = form.password.value;
+console.log(name,image,email,check,password)
+
     const formData = new FormData();
     formData.append("image", image);
     const url =
@@ -36,7 +41,7 @@ const Register = () => {
               .then(() => {
                 toast.success("Registation success")
               }  )
-              .catch((error) => console.error(error.messge));
+              
           })
           .catch((error) => console.error(error.messge));
       })
@@ -84,7 +89,7 @@ const Register = () => {
               />
             </div>
             <div className="flex">
-              <input type="checkbox" name="box" value="seller" id="" />
+              <input onClick={() => setCheckBox("seller")} type="checkbox" name="box"  id="" />
               <p className="ml-2">Be Come a Seller?</p>
             </div>
             <div>
@@ -119,7 +124,7 @@ const Register = () => {
           </div>
           <div className="space-y-2">
             <div>
-              <button class="btn bg-blue bordder-primary w-full cursor-pointer rounded-md border bg-silver py-3 px-5 text-base text-white transition hover:bg-opacity-90 font-bold">
+              <button className="btn bg-blue bordder-primary w-full cursor-pointer rounded-md border bg-silver py-3 px-5 text-base text-white transition hover:bg-opacity-90 font-bold">
                 Register
               </button>
             </div>
