@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo_photostock.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons";
+import { AuthContext } from "../context/Allcontext";
+import toast from "react-hot-toast";
 
 const Nav = () => {
+  const { user, logout } = useContext(AuthContext);
+
+  const handaleLogOut = () => {
+    logout()
+      .then(() => {
+        toast.success("Log Out success")
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="mt-4">
       <div className="navbar bg-base-100">
@@ -66,6 +77,31 @@ const Nav = () => {
           </ul>
         </div>
         <div className="navbar-end">
+          {user?.uid ? (
+            <>
+              <div className="tooltip" data-tip="LogOut">
+                <button onClick={handaleLogOut}>
+                  {" "}
+                  <FontAwesomeIcon
+                    className="mr-2"
+                    icon={faUnlock}
+                  ></FontAwesomeIcon>{" "}
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="tooltip" data-tip="Login/register">
+                <button>
+                  {" "}
+                  <FontAwesomeIcon
+                    className="mr-2"
+                    icon={faLock}
+                  ></FontAwesomeIcon>{" "}
+                </button>
+              </div>
+            </>
+          )}
           {/* {user?.uid ? ( */}
           {/* <>
               <span className="text-white"></span>
@@ -74,19 +110,7 @@ const Nav = () => {
               </button>
             </> */}
           {/* ) : ( */}
-          <>
-            <div className="tooltip" data-tip="Login/register">
-            <button>
-              {" "}
-              <FontAwesomeIcon
-                className="mr-2"
-                icon={faLock}
-              ></FontAwesomeIcon>{" "}
-              
-            </button>
-            </div>
-            
-          </>
+          <></>
           {/* )} */}
           {/* <Link className="btn bg-blue" to='/'>Start Now </Link> */}
         </div>

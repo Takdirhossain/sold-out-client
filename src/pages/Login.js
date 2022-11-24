@@ -1,7 +1,41 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { setAuthToken } from "../auth/api";
+import { AuthContext } from "../context/Allcontext";
 
 const Login = () => {
+  const [resetPass, setResetPass] = useState('')
+  const { signin, loading, setLoading, signInWithGoogle, resetPassword } = useContext(AuthContext)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
+
+  const handaleSubmit = event => {
+    event.preventDefault()
+    const email = event.target.email.value
+    const password = event.target.password.value
+    signin(email, password)
+      .then(result => {
+        console.log(result)
+        toast.success("login Success...")
+        setAuthToken(result.user)
+        navigate(from, { replace: true })
+      })
+      .catch(error => {
+        toast.error(error.message)
+        setLoading(false)
+      })
+  }
+
+  const handaleForgetPass = () => {
+    resetPassword(resetPass)
+      .then(result => {
+        toast.success("reset Link sent success")
+      })
+      .catch(error => console.error(error))
+    setLoading(false)
+  }
   return (
     <div>
       <div>
@@ -15,7 +49,7 @@ const Login = () => {
                       <h2 className="text-4xl font-bold">LogIn</h2>
                     </Link>
                   </div>
-                  <form>
+                  <form onSubmit={handaleSubmit}>
                     <div class="mb-6">
                       <input
                         name="email"
@@ -90,7 +124,7 @@ const Login = () => {
                       </Link>
                     </li>
                   </ul>
-                  <Link class="mb-2 inline-block text-base text-[#adadad] hover:text-primary hover:underline">
+                  <Link onClick={handaleForgetPass} class="mb-2 inline-block text-base text-[#adadad] hover:text-primary hover:underline">
                     Forget Password?
                   </Link>
                   <p class="text-base text-[#adadad]">
