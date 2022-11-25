@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { setAuthToken } from "../../auth/api";
 import { AuthContext } from "../../context/Allcontext";
 
 const Register = () => {
   const { updateUserProfile, createUser } = useContext(AuthContext);
 const [checkbox, setCheckBox] = useState('')
-
+const navigate = useNavigate()
 
 
   const handaleSubmit = (e) => {
@@ -18,7 +18,7 @@ const [checkbox, setCheckBox] = useState('')
     const email = form.email.value;
     const check = checkbox
     const password = form.password.value;
-console.log(name,image,email,check,password)
+
 
     const formData = new FormData();
     formData.append("image", image);
@@ -40,6 +40,7 @@ console.log(name,image,email,check,password)
             updateUserProfile(name, imageData.data.display_url)
               .then(() => {
                 toast.success("Registation success")
+                navigate('/')
               }  )
               
           })

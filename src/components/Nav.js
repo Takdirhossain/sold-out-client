@@ -84,13 +84,19 @@ const Nav = () => {
               </li>
           </>  
           }
-            {/* {user?.email ? ( */}
-            <>
-             
-             
+            {role && role === "admin" ? <>
+            <li className="font-semibold	">
+                {" "}
+                <Link to="/dashboard">DashBoard</Link>
+              </li>
             </>
-
-            <></>
+          : 
+          <>
+           <li className="text-xl">
+                <Link to="/myreview">My Review </Link>
+              </li>
+          </>  
+          }
           </ul>
         </div>
         <div className="navbar-end">

@@ -8,6 +8,7 @@ import Login from "../pages/account/Login";
 import Register from "../pages/account/Register";
 import Allproduct from "../pages/Allproduct";
 import Home from "../pages/Home";
+import Private from "./Private";
 
 
 const route = createBrowserRouter([
@@ -15,7 +16,7 @@ const route = createBrowserRouter([
         {path: '/', element: <Home></Home>},
         {path: '/login', element: <Login></Login>},
         {path: '/register', element: <Register></Register>},
-        {path: '/allproduct/:id', element: <Allproduct></Allproduct>, loader:({params})=>fetch(`http://localhost:5000/category/${params.id}`)},
+        {path: '/allproduct/:id', element: <Private><Allproduct></Allproduct></Private>, loader:({params})=>fetch(`http://localhost:5000/category/${params.id}`)},
 
     ] },
     {path:'/dashboard', element: <DashboardLayout></DashboardLayout>, children: [
