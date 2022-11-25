@@ -6,7 +6,7 @@ import { AuthContext } from "../context/Allcontext";
 const Sidebar = () => {
   const { user } = useContext(AuthContext);
   const [role, setRole] = useState(null);
-console.log(role)
+  
   useEffect(() => {
     userRole(user?.email).then((data) => {
       setRole(data);
@@ -55,18 +55,27 @@ console.log(role)
                 </p>
               </Link>
             </div>
-            {role && role === 'seller' ? <>
-            <div className="mt-10">
-            <Link className=" mb-4 btn bg-blue bordder-primary w-full cursor-pointer rounded-md border bg-silver py-3 px-5 text-base text-white transition hover:bg-opacity-90 font-bold" to="/dashboard/addproduct">Add Product</Link><br />
-            <Link className="btn bg-blue bordder-primary w-full cursor-pointer rounded-md border bg-silver py-3 px-5 text-base text-white transition hover:bg-opacity-90 font-bold" to="/dashboard/myproduct">My Product</Link>
-            </div>
-            </>
-            
-          : <>
-          
-          </>  
-          }
-            
+            {role && role === "seller" ? (
+              <>
+                <div className="mt-10">
+                  <Link
+                    className=" mb-4 btn bg-blue bordder-primary w-full cursor-pointer rounded-md border bg-silver py-3 px-5 text-base text-white transition hover:bg-opacity-90 font-bold"
+                    to="/dashboard/addproduct"
+                  >
+                    Add Product
+                  </Link>
+                  <br />
+                  <Link
+                    className="btn bg-blue bordder-primary w-full cursor-pointer rounded-md border bg-silver py-3 px-5 text-base text-white transition hover:bg-opacity-90 font-bold"
+                    to="/dashboard/myproduct"
+                  >
+                    My Product
+                  </Link>
+                </div>
+              </>
+            ) : (
+              <></>
+            )}
           </div>
 
           {/* Nav Items */}

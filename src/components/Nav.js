@@ -1,13 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo_photostock.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../context/Allcontext";
 import toast from "react-hot-toast";
+import { userRole } from "../auth/role";
 
 const Nav = () => {
   const { user, logout } = useContext(AuthContext);
+
+  const [role, setRole] = useState(null);
+  
+  useEffect(() => {
+    userRole(user?.email).then((data) => {
+      setRole(data);
+    });
+  }, [user]);
 
   const handaleLogOut = () => {
     logout()
@@ -62,15 +71,23 @@ const Nav = () => {
             <li className="text-xl">
               <Link to="/blog">Blogs </Link>
             </li>
-            {/* {user?.email ? ( */}
-            <>
-              <li className="font-semibold	">
+            {role && role === "seller" ? <>
+            <li className="font-semibold	">
                 {" "}
-                <Link to="/addproduct">Add Product</Link>
+                <Link to="/dashboard">DashBoard</Link>
               </li>
-              <li className="text-xl">
+            </>
+          : 
+          <>
+           <li className="text-xl">
                 <Link to="/myreview">My Review </Link>
               </li>
+          </>  
+          }
+            {/* {user?.email ? ( */}
+            <>
+             
+             
             </>
 
             <></>

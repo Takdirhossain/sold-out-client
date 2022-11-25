@@ -4,14 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Allcontext from './context/Allcontext';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
+const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-   <Allcontext>
+     <QueryClientProvider client={queryClient}>
+       <Allcontext>
     <App></App>
    </Allcontext>
+     </QueryClientProvider>
+  
   </React.StrictMode>
 );
 

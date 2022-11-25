@@ -5,6 +5,7 @@ import DashboardLayout from "../layout/DashboardLayout";
 import Main from "../layout/Main";
 import Login from "../pages/account/Login";
 import Register from "../pages/account/Register";
+import Allproduct from "../pages/Allproduct";
 import Home from "../pages/Home";
 
 
@@ -13,6 +14,7 @@ const route = createBrowserRouter([
         {path: '/', element: <Home></Home>},
         {path: '/login', element: <Login></Login>},
         {path: '/register', element: <Register></Register>},
+        {path: '/allproduct/:id', element: <Allproduct></Allproduct>, loader:({params})=>fetch(`http://localhost:5000/category/${params.id}`)},
 
     ] },
     {path:'/dashboard', element: <DashboardLayout></DashboardLayout>, children: [
