@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { useLoaderData } from 'react-router-dom';
+import Loading from '../components/Loading';
 
 const Allproduct = () => {
     const product = useLoaderData()
+    const [loading, setLoading] = useState(false)
     const { data: products = [] } = useQuery({
         queryKey: ['products'],
+        
         queryFn: async () => {
+            setLoading(true)
             const res = await fetch(`http://localhost:5000/products?id=${product._id}`)
             const data = res.json()
+            setLoading(false)
             return data
         }
 
@@ -16,7 +21,12 @@ const Allproduct = () => {
     console.log(products)
     return (
         <div>
-            <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-20' >
+            {loading? <>
+            <Loading></Loading>
+            </>
+        : 
+        <>
+        <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-20' >
                 {
                     products?.map(product => 
                     <div className="card card-compact w-96 bg-base-100 shadow-xl category-card">
@@ -36,6 +46,8 @@ const Allproduct = () => {
                     </div>)
                 }
             </div>
+        </>    
+        }
         </div>
     );
 };
