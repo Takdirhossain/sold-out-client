@@ -39,6 +39,7 @@ const Allproduct = () => {
                             <p className='text-xl font-bold'>Location : {product.location}</p>
                             <p className='text-xl font-bold'>Year Of Use : {product.usedDay} Year</p>
                             <p className='text-xl font-bold'>Seller Name : {product.name}</p>
+                            <p className='text-xl font-bold'>Poste Date : {product.time}</p>
                             <div className="card-actions justify-end">
                                 <button className="btn btn-primary">Book now</button>
                             </div>
