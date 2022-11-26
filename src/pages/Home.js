@@ -3,6 +3,7 @@ import Category from '../components/Category';
 import Header from '../components/Header';
 
 const Home = () => {
+    
     return (
         <div>
             <Header></Header>

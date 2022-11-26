@@ -7,7 +7,7 @@ const MyProduct = () => {
   const [myadded, setMyadded] = useState([]);
   console.log(myadded);
   useEffect(() => {
-    fetch(`http://localhost:5000/products?email=${user?.email}`)
+    fetch(`http://localhost:5000/product?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setMyadded(data);

@@ -6,9 +6,8 @@ import { AuthContext } from "../../context/Allcontext";
 
 const Register = () => {
   const { updateUserProfile, createUser } = useContext(AuthContext);
-const [checkbox, setCheckBox] = useState('')
-const navigate = useNavigate()
-
+  const [checkbox, setCheckBox] = useState("");
+  const navigate = useNavigate();
 
   const handaleSubmit = (e) => {
     e.preventDefault();
@@ -16,9 +15,9 @@ const navigate = useNavigate()
     const name = form.name.value;
     const image = form.image.files[0];
     const email = form.email.value;
-    const check = checkbox
+    const check = checkbox;
     const password = form.password.value;
-
+    console.log(check);
 
     const formData = new FormData();
     formData.append("image", image);
@@ -36,13 +35,11 @@ const navigate = useNavigate()
         createUser(email, password)
           .then((result) => {
             setAuthToken(result.user, check);
-            
-            updateUserProfile(name, imageData.data.display_url)
-              .then(() => {
-                toast.success("Registation success")
-                navigate('/')
-              }  )
-              
+
+            updateUserProfile(name, imageData.data.display_url).then(() => {
+              toast.success("Registation success");
+              navigate("/");
+            });
           })
           .catch((error) => console.error(error.messge));
       })
@@ -90,8 +87,20 @@ const navigate = useNavigate()
               />
             </div>
             <div className="flex">
-              <input onClick={() => setCheckBox("seller")} type="checkbox" name="box"  id="" />
+              <input
+                onClick={() => setCheckBox("seller")}
+                type="checkbox"
+                name="box"
+                id=""
+              />
               <p className="ml-2">Be Come a Seller?</p>
+              <input
+                onClick={() => setCheckBox("buyer")}
+                type="checkbox"
+                name="box"
+                id=""
+              />
+              <p className="ml-2">Be Come a buyer?</p>
             </div>
             <div>
               <label htmlFor="email" className="block mb-2 text-sm">

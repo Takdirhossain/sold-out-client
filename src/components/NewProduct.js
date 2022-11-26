@@ -59,6 +59,7 @@ const NewProduct = () => {
         console.log(imageData);
         if (imageData.success) {
           const products = {
+            email:user?.email,
             name: name,
             productName: productName,
             phone: phone,
@@ -109,6 +110,20 @@ const NewProduct = () => {
                 type="text"
                 defaultValue={user?.displayName}
                 name="username"
+                id="name"
+                placeholder="Product Title"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-green-500 bg-gray-200 text-gray-900"
+                data-temp-mail-org="0"
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block mb-2 text-sm">
+                Name
+              </label>
+              <input
+                type="text"
+                defaultValue={user?.email}
+               
                 id="name"
                 placeholder="Product Title"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-green-500 bg-gray-200 text-gray-900"

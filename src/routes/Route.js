@@ -6,6 +6,7 @@ import DashboardLayout from "../layout/DashboardLayout";
 import Main from "../layout/Main";
 import Login from "../pages/account/Login";
 import Register from "../pages/account/Register";
+import AllBuyer from "../pages/AllBuyer";
 import Allproduct from "../pages/Allproduct";
 import Home from "../pages/Home";
 import Private from "./Private";
@@ -24,6 +25,7 @@ const route = createBrowserRouter([
         
         {path:'/dashboard/addproduct', element: <NewProduct></NewProduct>},
         {path:'/dashboard/myproduct', element:<MyProduct></MyProduct>},
+        {path:'/dashboard/allbuyer', element:<AllBuyer></AllBuyer>},
     ] }
 ])
 

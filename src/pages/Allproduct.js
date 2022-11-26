@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { useLoaderData } from 'react-router-dom';
+import BookingModal from '../components/BookingModal';
 import Loading from '../components/Loading';
 
 const Allproduct = () => {
     const product = useLoaderData()
     const [loading, setLoading] = useState(false)
+    const [bookings, setBookings] = useState(null);
     const { data: products = [] } = useQuery({
         queryKey: ['products'],
         
@@ -41,10 +43,22 @@ const Allproduct = () => {
                             <p className='text-xl font-bold'>Seller Name : {product.name}</p>
                             <p className='text-xl font-bold'>Poste Date : {product.time}</p>
                             <div className="card-actions justify-end">
-                                <button className="btn btn-primary">Book now</button>
+                            <label
+                       
+                        htmlFor="booking-modal"
+                        className="btn btn-primary text-white"
+                        onClick={() => setBookings(product)}
+                    >Book Now</label>
                             </div>
                         </div>
-                    </div>)
+                       
+
+             </div>)
+                }
+                {
+                    setBookings&& <BookingModal bookings={bookings}>
+
+                    </BookingModal>
                 }
             </div>
         </>    
