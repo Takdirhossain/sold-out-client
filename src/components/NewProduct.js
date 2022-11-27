@@ -17,6 +17,14 @@ const NewProduct = () => {
       return data;
     },
   });
+  const { data: verify = [] } = useQuery({
+    queryKey: ["verify"],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/verified?email=${user?.email}`);
+      const data = res.json();
+      return data;
+    },
+  });
 
   const handaleSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +50,8 @@ const NewProduct = () => {
       sellingprice,
       usedDay,
       id,
-      image
+      image,
+      verify.verify
     );
 
     const formData = new FormData();
@@ -70,6 +79,7 @@ const NewProduct = () => {
             cateid: id,
             time,
             image: imageData.data.url,
+            verifyed: verify.verify
           };
           fetch(`http://localhost:5000/products`, {
             method: "POST",
