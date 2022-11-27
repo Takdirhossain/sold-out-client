@@ -80,7 +80,7 @@ const Nav = () => {
           : 
           <>
            <li className="text-xl">
-                <Link to="/myreview">My Review </Link>
+                <Link to="/mybooked">My Booked </Link>
               </li>
           </>  
           }
@@ -92,9 +92,7 @@ const Nav = () => {
             </>
           : 
           <>
-           <li className="text-xl">
-                <Link to="/myreview">My Review </Link>
-              </li>
+          
           </>  
           }
           </ul>
