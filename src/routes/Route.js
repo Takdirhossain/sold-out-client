@@ -1,4 +1,5 @@
 import {  createBrowserRouter } from "react-router-dom";
+import Allseller from "../components/Allseller";
 import MyProduct from "../components/MyProduct";
 import NewProduct from "../components/NewProduct";
 import Welcome from "../components/Welcome";
@@ -18,7 +19,7 @@ const route = createBrowserRouter([
         {path: '/', element: <Home></Home>},
         {path: '/login', element: <Login></Login>},
         {path: '/register', element: <Register></Register>},
-        {path: '/mybooked', element: <Mybooked></Mybooked>},
+        {path: '/mybooked', element: <Mybooked></Mybooked>,},
         {path: '/allproduct/:id', element: <Private><Allproduct></Allproduct></Private>, loader:({params})=>fetch(`http://localhost:5000/category/${params.id}`)},
 
     ] },
@@ -28,6 +29,7 @@ const route = createBrowserRouter([
         {path:'/dashboard/addproduct', element: <NewProduct></NewProduct>},
         {path:'/dashboard/myproduct', element:<MyProduct></MyProduct>},
         {path:'/dashboard/allbuyer', element:<AllBuyer></AllBuyer>},
+        {path:'/dashboard/allseller', element: <Allseller></Allseller>},
     ] }
 ])
 

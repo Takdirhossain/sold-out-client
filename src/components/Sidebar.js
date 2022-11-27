@@ -60,7 +60,7 @@ const Sidebar = () => {
                <div className="mt-10">
                   <Link
                     className=" mb-4 btn bg-blue bordder-primary w-full cursor-pointer rounded-md border bg-silver py-3 px-5 text-base text-white transition hover:bg-opacity-90 font-bold"
-                    to="/dashboard/addproduct"
+                   to="/dashboard/allseller"
                   >
                   All Sellers
                   </Link>
