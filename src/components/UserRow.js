@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserRow = ({us}) => {
+const UserRow = ({us, handaleDelete}) => {
     return (
         <tr>
       <td>
@@ -18,7 +18,7 @@ const UserRow = ({us}) => {
       </td>
       <td>{us.role}</td>
       <th>
-        <button className="btn btn-ghost btn-xs">X</button>
+        <button onClick={() => handaleDelete(us._id)}  className="btn btn-ghost btn-xs">X</button>
       </th>
     </tr>
     );

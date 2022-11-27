@@ -4,8 +4,8 @@ export const setAuthToken =( user, seller) => {
         email: user.email,
         role: seller
     }
-    fetch(`http://localhost:5000/user/${user?.email}`, {
-        method: 'put',
+    fetch(`http://localhost:5000/user/`, {
+        method: 'POST',
         headers: {
             'content-type': 'application/json'
         },

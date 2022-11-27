@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
-const AllSellerRow = ({ seller }) => {
+const AllSellerRow = ({ seller,handaleDelete, refetch }) => {
+  const handaleVeryfi = email => {
+    fetch(`http://localhost:5000/user/${email}`, {
+        method: 'PUT'
+    })
+    .then(res => res.json())
+    .then(data => {
+        refetch()
+    })
+  }
   return (
     <tr>
       <td>
@@ -17,8 +26,18 @@ const AllSellerRow = ({ seller }) => {
         <br />
       </td>
       <td>{seller.role}</td>
+      <td>
+        {
+            seller.verify !== "verifyed"? <>
+            <button className="bg-red-600 p-2 text-white" onClick={() => handaleVeryfi(seller.email)}>verify</button>
+            </>
+            :
+            <button className="bg-lime-700 p-2 text-white">verified</button>
+        }
+        
+      </td>
       <th>
-        <button className="btn btn-ghost btn-xs">X</button>
+        <button onClick={() => handaleDelete(seller._id)} className="btn btn-ghost btn-xs">Delete</button>
       </th>
     </tr>
   );
