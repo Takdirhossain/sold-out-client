@@ -117,7 +117,8 @@ const NewProduct = () => {
                 Name
               </label>
               <input
-                type="text"
+                type="text" 
+                readOnly
                 defaultValue={user?.displayName}
                 name="username"
                 id="name"
@@ -132,6 +133,7 @@ const NewProduct = () => {
               </label>
               <input
                 type="text"
+                 readOnly
                 defaultValue={user?.email}
                
                 id="name"

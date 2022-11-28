@@ -13,6 +13,7 @@ import Allproduct from "../pages/Allproduct";
 import Allreported from "../pages/Allreported";
 import Home from "../pages/Home";
 import Mybooked from "../pages/Mybooked";
+import Payment from "../pages/Payment";
 import Private from "./Private";
 
 
@@ -21,7 +22,8 @@ const route = createBrowserRouter([
         {path: '/', element: <Home></Home>},
         {path: '/login', element: <Login></Login>},
         {path: '/register', element: <Register></Register>},
-        {path: '/mybooked', element: <Mybooked></Mybooked>,},
+        {path: '/mybooked', element: <Mybooked></Mybooked>},
+        {path: '/payment/:id', element: <Payment></Payment>, loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`) },
         {path: '/allproduct/:id', element: <Private><Allproduct></Allproduct></Private>, loader:({params})=>fetch(`http://localhost:5000/category/${params.id}`)},
 
     ] },
@@ -34,6 +36,7 @@ const route = createBrowserRouter([
         {path:'/dashboard/allseller', element: <Allseller></Allseller>},
         {path:'/dashboard/allproduct', element: <AllProduct></AllProduct> },
         {path:'/dashboard/allreported', element:<Allreported></Allreported> },
+
     ] }
 ])
 
