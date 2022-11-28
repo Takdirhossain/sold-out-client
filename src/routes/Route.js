@@ -11,6 +11,8 @@ import Register from "../pages/account/Register";
 import AllBuyer from "../pages/AllBuyer";
 import Allproduct from "../pages/Allproduct";
 import Allreported from "../pages/Allreported";
+import Blogs from "../pages/Blogs";
+import Blog from "../pages/Blogs";
 import Home from "../pages/Home";
 import Mybooked from "../pages/Mybooked";
 import Payment from "../pages/Payment";
@@ -20,6 +22,7 @@ import Private from "./Private";
 const route = createBrowserRouter([
     {path: '/', element: <Main></Main>, children: [
         {path: '/', element: <Home></Home>},
+        {path: '/blog', element: <Blogs></Blogs>},
         {path: '/login', element: <Login></Login>},
         {path: '/register', element: <Register></Register>},
         {path: '/mybooked', element: <Mybooked></Mybooked>},
