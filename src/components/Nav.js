@@ -11,7 +11,7 @@ const Nav = () => {
   const { user, logout } = useContext(AuthContext);
 
   const [role, setRole] = useState(null);
-  
+
   useEffect(() => {
     userRole(user?.email).then((data) => {
       setRole(data);
@@ -21,7 +21,7 @@ const Nav = () => {
   const handaleLogOut = () => {
     logout()
       .then(() => {
-        toast.success("Log Out success")
+        toast.success("Log Out success");
       })
       .catch((error) => console.log(error));
   };
@@ -71,30 +71,41 @@ const Nav = () => {
             <li className="text-xl">
               <Link to="/blog">Blogs </Link>
             </li>
-            {role && role === "seller" ? <>
-            <li className="font-semibold	">
-                {" "}
-                <Link to="/dashboard">DashBoard</Link>
-              </li>
-            </>
-          : 
-          <>
-           <li className="text-xl">
-                <Link to="/mybooked">My Booked </Link>
-              </li>
-          </>  
-          }
-            {role && role === "admin" ? <>
-            <li className="font-semibold	">
-                {" "}
-                <Link to="/dashboard">DashBoard</Link>
-              </li>
-            </>
-          : 
-          <>
-          
-          </>  
-          }
+            {role && role === "seller" ? (
+              <>
+                <li className="font-semibold	">
+                  {" "}
+                  <Link to="/dashboard">DashBoard</Link>
+                </li>
+              </>
+            ) : (
+              <>
+               
+              </>
+            )}
+
+            {role && role === "buyer" ? (
+              <>
+               <li className="text-xl">
+                  <Link to="/mybooked">My Booked </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                
+              </>
+            )}
+
+            {role && role === "admin" ? (
+              <>
+                <li className="font-semibold	">
+                  {" "}
+                  <Link to="/dashboard">DashBoard</Link>
+                </li>
+              </>
+            ) : (
+              <></>
+            )}
           </ul>
         </div>
         <div className="navbar-end">
@@ -113,14 +124,14 @@ const Nav = () => {
           ) : (
             <>
               <div className="tooltip" data-tip="Login/register">
-                <Link to='/login'>
-                <button>
-                  {" "}
-                  <FontAwesomeIcon
-                    className="mr-2"
-                    icon={faLock}
-                  ></FontAwesomeIcon>{" "}
-                </button>
+                <Link to="/login">
+                  <button>
+                    {" "}
+                    <FontAwesomeIcon
+                      className="mr-2"
+                      icon={faLock}
+                    ></FontAwesomeIcon>{" "}
+                  </button>
                 </Link>
               </div>
             </>
