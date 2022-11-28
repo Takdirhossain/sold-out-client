@@ -1,9 +1,40 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
+import toast from 'react-hot-toast';
+import { AuthContext } from '../context/Allcontext';
 
 const ProductDetails = ({product, setBookings }) => {
-  console.log(product)
+  const {user} = useContext(AuthContext)
+const handaleSubmit = () => {
+  const data = {
+    reporteremail: user.email,
+    productName:product.productName,
+    productImg:product.image,
+    sellerName: product.name,
+    productid : product._id,
+    sellingprice: product.sellingprice
+  }
+  
+  fetch('http://localhost:5000/report', {
+    method: "POST",
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if(data.acknowledged){
+      toast.success("Report Success")  
+    }else{
+      toast.error(data.message)
+  }
+  })
+
+}
+
+
     return (
         <div className="card card-compact w-96 bg-base-100 shadow-xl category-card">
         <figure>
@@ -54,8 +85,9 @@ const ProductDetails = ({product, setBookings }) => {
           <p className="text-xl font-bold">
             Poste Date : {product.time}
           </p>
+          
           <div className="card-actions justify-end">
-           
+          <button onClick={handaleSubmit} className='btn'>Report To Admin</button>
             <label htmlFor="my-modal-6" onClick={() => setBookings(product)} className="btn">Book Now</label>
           </div>
         </div>
