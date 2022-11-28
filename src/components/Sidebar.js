@@ -73,7 +73,7 @@ const Sidebar = () => {
                   </Link>
                   <Link
                     className="mt-4 btn bg-blue bordder-primary w-full cursor-pointer rounded-md border bg-silver py-3 px-5 text-base text-white transition hover:bg-opacity-90 font-bold"
-                    to="/dashboard/myproduct"
+                    to="/dashboard/allreported"
                   >
                      Reported Items
                   </Link>

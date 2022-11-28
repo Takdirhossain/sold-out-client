@@ -10,6 +10,7 @@ import Login from "../pages/account/Login";
 import Register from "../pages/account/Register";
 import AllBuyer from "../pages/AllBuyer";
 import Allproduct from "../pages/Allproduct";
+import Allreported from "../pages/Allreported";
 import Home from "../pages/Home";
 import Mybooked from "../pages/Mybooked";
 import Private from "./Private";
@@ -32,6 +33,7 @@ const route = createBrowserRouter([
         {path:'/dashboard/allbuyer', element:<AllBuyer></AllBuyer>},
         {path:'/dashboard/allseller', element: <Allseller></Allseller>},
         {path:'/dashboard/allproduct', element: <AllProduct></AllProduct> },
+        {path:'/dashboard/allreported', element:<Allreported></Allreported> },
     ] }
 ])
 
