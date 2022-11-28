@@ -77,6 +77,9 @@ const Nav = () => {
                   {" "}
                   <Link to="/dashboard">DashBoard</Link>
                 </li>
+                <li className="text-xl">
+                  <Link to="/mybooked">My Booked </Link>
+                </li>
               </>
             ) : (
               <>

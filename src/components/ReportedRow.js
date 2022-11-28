@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ReportedRow = ({report}) => {
+const ReportedRow = ({report, handleDelete}) => {
     const {productImg, productName, reporteremail, sellerName, productid, _id} = report
     return (
         <tr>
@@ -31,7 +31,7 @@ const ReportedRow = ({report}) => {
         <td>{reporteremail}</td>
         <td>{reporteremail}</td>
         <th>
-          <button className="btn btn-ghost btn-xs">Delete</button>
+          <button onClick={() => handleDelete(productid)} className="btn btn-ghost btn-xs">Delete</button>
         </th>
       </tr>
     );
