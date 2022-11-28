@@ -1,8 +1,12 @@
 import React from 'react';
 
-const Myadded = ({add}) => {
-    console.log(add)
+const Myadded = ({add, handaleDelete}) => {
+    console.log(add._id)
     const {productName, image, time} = add
+
+    // const handaleDelete = id => {
+
+    // }
     return (
         
             <tr>
@@ -32,7 +36,7 @@ const Myadded = ({add}) => {
               </td>
               <td>{time}</td>
               <th>
-                <button className="btn btn-ghost btn-xs">details</button>
+                <button onClick={() => handaleDelete(add._id)} className="btn btn-ghost btn-xs">Delete</button>
               </th>
             </tr>
        
