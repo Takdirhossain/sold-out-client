@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/Allcontext';
 
 const CheckOutForm = ({ data }) => {
+
     const [cardError, setCardError] = useState('')
     const [success, setSuccess] = useState('')
     const [transaction, setTransaction] = useState('')
@@ -98,11 +99,13 @@ const CheckOutForm = ({ data }) => {
                             method: 'DELETE',
                         })
                             .then(res => res.json())
-                            .then(data => {})
+                            .then(data => {
+                                console.log(data)
+                            })
                         navigate('/')
 
                     }
-                    console.log(data)
+                   
                 })
         }
         setProcessing(false)

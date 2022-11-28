@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
 
 const AllProduct = () => {
+
     const { data: products = [],refetch,isLoading } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {

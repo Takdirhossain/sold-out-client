@@ -37,6 +37,10 @@ const MyProduct = () => {
         });
     }
   };
+
+
+
+
   return (
     <div>
       <div className="overflow-x-auto w-full">
@@ -51,7 +55,8 @@ const MyProduct = () => {
               <th>Image</th>
               <th>Product Name</th>
               <th>Posted Date</th>
-              <th></th>
+              <th>Delete</th>
+              <th>ads</th>
             </tr>
           </thead>
           <tbody>
